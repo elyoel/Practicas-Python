@@ -1,17 +1,16 @@
 import random
 import string
 words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
+    ["python", "programa", "variable"],
+    ["funcion", "bucle"],
+    ["cadena", "entero", "lista"]
 ]
 
-word = random.choice(words)
+category = int(input("""Elija una categoria para empezar:
+    (1) Categoria uno 
+    (2) Categoria dos
+    (3) Categoria tres """)) - 1
+word = random.choice(words[category])
 guessed = []
 attempts = 6
 
