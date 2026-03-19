@@ -7,9 +7,9 @@ words = [
 ]
 
 category = int(input("""Elija una categoria para empezar:
-    (1) Categoria uno 
-    (2) Categoria dos
-    (3) Categoria tres """)) - 1
+    (1) Categoria X
+    (2) Categoria logica
+    (3) Categoria tipo de dato """)) - 1
 word = random.choice(words[category])
 guessed = []
 attempts = 6
