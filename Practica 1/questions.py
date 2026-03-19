@@ -6,11 +6,13 @@ words = [
     ["cadena", "entero", "lista"]
 ]
 
-category = int(input("""Elija una categoria para empezar:
+num_category = int(input("""Elija una categoria para empezar:
     (1) Categoria X
     (2) Categoria logica
-    (3) Categoria tipo de dato """)) - 1
-word = random.choice(words[category])
+    (3) Categoria tipo de dato 
+    """)) - 1
+category = random.sample(words[num_category], len(words[num_category]))
+
 guessed = []
 attempts = 6
 
@@ -20,6 +22,7 @@ print("¡Bienvenido al Ahorcado!")
 print()
 
 while attempts > 0:
+
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
     progress = ""
     for letter in word:
@@ -31,11 +34,12 @@ while attempts > 0:
 
     # Verificar si el jugador ya adivinó la palabra completa
     if "_" not in progress:
-        print("¡Ganaste!")
         score += 6
+        guessed.clear()
+        print("¡Ganaste!")
         print(f"Tu Puntaje fue de {score} puntos")
-        break
-    
+        if len(category) == 0: break
+
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
 
