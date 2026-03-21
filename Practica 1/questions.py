@@ -23,7 +23,7 @@ while attempts > 0:
     print(f'  - ({len(category)}) para finalizar')
     selection = int(input('Elija un numero: '))
     
-    if selection == i+1: 
+    if selection == len(category): 
         #Muestro el puntaje final al terminar el juego
         print(f"Tu Puntaje fue de {score} puntos")
         break
