@@ -64,15 +64,18 @@ def ranking ():
                 leaderboard[name]['total'] += score
                 leaderboard[name]['scores'].append(score)
             else:
-                leaderboard[name] = {
+                leaderboard.update({
+                    name: {
                     'total': score,
                     'scores': [score],
                     'wins': 0
-                }
+                    }
+                })
+
             round_scores[name] = score
         
       
-        winner = max(leaderboard, key = round_scores.get)
+        winner = max(round_scores, key = round_scores.get)
         leaderboard[winner]['wins'] += 1
 
         
@@ -83,15 +86,11 @@ def ranking ():
         final_ranking = sorted(leaderboard.items(), key=lambda x: x[1]['total'], reverse=True)
 
         print('Tabla de posiciones: ') 
-        for player, scores in final_ranking:
-            print(f'Cocinero: {player}')
-            print(f'Puntaje: {scores['total']}')
-            print(f'Rondas Ganadas: {scores['wins']}')
-            print(f'Mejor Ronda: {max(scores['scores'])}')
-            print(f'Promedio: {sum(scores['scores']) / len(scores['scores']):.1f}')
+        for name, data in final_ranking:
+            print(f'Cocinero: {name}')
+            print(f'Puntaje: {data['total']}')
+            print(f'Rondas Ganadas: {data['wins']}')
+            print(f'Mejor Ronda: {max(data['scores'])}')
+            print(f'Promedio: {sum(data['scores']) / len(data['scores']):.1f}')
             print()
 
-
-
-             
-ranking() 
